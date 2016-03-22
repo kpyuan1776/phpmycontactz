@@ -17,6 +17,68 @@ A basic web-based CRUD example that allows a single user to manage contacts such
 * the source code provided here requires a fully configured laravel 5 environment in order to run...
 
 
+## Database-Layout:
+
+tables and fields:
+
+* contacts
+  * id: INT, PRIMARY, AUTO INCREMENT
+  * first_name: Varchar(255), Not NULL
+  * last_name: Varchar(255), Not NULL
+  * street: Varchar(255)
+  * pcode: Varchar(255)
+  * city: Varchar(255)
+  * country: Varchar(255)
+  * created_at: Timestamp, Defalut 0,
+  * updated_at: Timestamp, Defalut 0
+
+* email
+  * id: INT, PRIMARY, AUTO INCREMENT
+  * email_adr: Varchar(255), Not Null
+  * contact_id: INT, NOT NULL, FOREIGN KEY->contact(id)
+  * created_at: Timestamp, Defalut 0,
+  * updated_at: Timestamp, Defalut 0
+
+* telephones
+  * id: INT, PRIMARY, AUTO INCREMENT
+  * type: Varchar(255)
+  * number: : Varchar(255), Not Null
+  * contact_id: INT, NOT NULL, FOREIGN KEY->contact(id)
+  * created_at: Timestamp, Defalut 0,
+  * updated_at: Timestamp, Defalut 0
+
+* notes
+  * id: INT, PRIMARY, AUTO INCREMENT
+  * note_text: Text, Not Null
+  * contact_id: INT, NOT NULL, FOREIGN KEY->contact(id)
+  * created_at: Timestamp, Defalut 0,
+  * updated_at: Timestamp, Defalut 0
+
+
+## ReST Description
+
+* GET /mycontacts/public/contacts
+  * show all contacts
+* GET /mycontacts/public/contacts/create
+  * shows add new contact view
+* GET /mycontacts/public/contacts/{contact_id}/show
+  * shows contact information with id=contact_id
+* POST /mycontacts/public/contacts
+  * creates new contact in contacts,email,telephone,notes table
+* GET /mycontact/public/contacts/{contact_id}/edit
+  * shows contact information with id=contact_id for editing
+* PUT /mycontacts/public/contacts/{contact_id}/update
+  * updates contact information with id=contact_is
+* DELETE /mycontacts//public/contacts/{contact_id}
+  * deletes contact and all information related to from database
+* Get /mycontacts/public/contacts/del/{contact_id}
+  * shows contact with id=contact_id + warning message if deletion is intended 
+* DELETE /mycontacts/public/contacts/destroyTel/{telephone_id}
+  * deletes telephone entry with id=telephone_id
+* DELETE /mycontacts/public/contacts/destroyNote/{note_id}
+  * deletes note entry
+* DELETE /mycontacts/public/contacts/destroyEmail/{email_id}
+  * deletes emails entry
 
 ## Extensions:
 
