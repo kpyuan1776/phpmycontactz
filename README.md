@@ -14,8 +14,13 @@ A basic web-based CRUD example that allows a single user to manage contacts such
 * Data can be persisted in a MySQL-database (see database dumps for further details)
 * there are 4 tables: contacts, emails, telephones, notes. 
 * for persistance operations Laravels-ORM Eloquet is used, there are four model classes: Contact.php,Email.php,Telephone.php and Note.php
-* the source code provided here requires a fully configured laravel 5 environment in order to run...
+* the source code provided here requires a fully configured laravel 5 environment in order to run. Just create a laravel project, e.g. using:
 
+    php composer create-project laravel/laravel server-root/project-folder --prefer-dist
+
+files can be also copy-pasted from here...
+
+* a basic webform (webReactFormExample.php) using React JS is included. It contains the basic components to generate webforms. It will be used to dynamically add additional email/telephone input fields when adding or updating contacts. 
 
 ## Database-Layout:
 
