@@ -94,6 +94,8 @@ Moreover, showing a * all-contacts-component* and a *show-a-specific-contact* on
 
 2. With an extension to several users that create contacts and  proper authentication, it would be much more useful.
 
-3. ...
+3. JSON-format for View-Model interface
+
+4. ...
 
     
