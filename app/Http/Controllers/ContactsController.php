@@ -43,7 +43,8 @@ class ContactsController extends Controller
        */
        public function store(Request $request)
        {
-         
+         //dd($request->input('num_email'));
+
 
          // persist contacts
          $contact = new \App\Contact;
@@ -60,10 +61,42 @@ class ContactsController extends Controller
          //dd($c_id);
          
          // persist email addresses
+         // check if there is only 1 or more for backward compatibility
+         if($request->input('num_email')==="1"){
          $email = new \App\Email;
          $email->email_adr = $request->input('email');
          $email->contact_id = $c_id->maxID;
          $email->save();
+         } else {
+           $email = new \App\Email;
+            $email->email_adr = $request->input('email');
+            $email->contact_id = $c_id->maxID;
+            $email->save();
+           for($i=2; $i <= $request->input('num_email');$i++){
+             $email = new \App\Email;
+             $email->email_adr = $request->input('email'.$i);
+             $email->contact_id = $c_id->maxID;
+             $email->save();
+           }
+         }
+         
+         /*
+         //loop over number of email edits
+          for($i=1; $i <= $request->input('num_email');$i++){
+            $email = \App\Email::find($request->input('email_id'.$i));
+            $email->email_adr = $request->input('email'.$i);
+            $email->save();
+          }
+          
+          if($request->input('email_new')){
+            // persist email addresses
+            $email = new \App\Email;
+            $email->email_adr = $request->input('email_new');
+            $email->contact_id = $id;
+            $email->save();
+          }
+         
+         */
          
          //persist telephone numbers
          $tel = new \App\Telephone;
@@ -242,7 +275,7 @@ class ContactsController extends Controller
         
         /**
         * Remove the specified resource from storage.
-        * DELETE http://www.kpaulyuan/mycontactz/public/contacts/destroyEmail/{resourcename}
+        * DELETE http://www.kpaulyuan/mycontactz/public/contacts/deleteEmail/{resourcename}
         * 
         * @param int $id
         * @return Response
@@ -257,7 +290,7 @@ class ContactsController extends Controller
         
         /**
         * Remove the specified resource from storage.
-        * DELETE http://www.kpaulyuan/mycontactz/public/contacts/destroyTel/{resourcename}
+        * DELETE http://www.kpaulyuan/mycontactz/public/contacts/deleteTel/{resourcename}
         * 
         * @param int $id
         * @return Response
@@ -272,7 +305,7 @@ class ContactsController extends Controller
         
         /**
         * Remove the specified resource from storage.
-        * DELETE http://www.kpaulyuan/mycontactz/public/contacts/destroyNote/{resourcename}
+        * DELETE http://www.kpaulyuan/mycontactz/public/contacts/deleteNote/{resourcename}
         * 
         * @param int $id
         * @return Response
