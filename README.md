@@ -20,7 +20,8 @@ A basic web-based CRUD example that allows a single user to manage contacts such
 
 files can be also copy-pasted from here...
 
-* a basic webform (webReactFormExample.php) using React JS is included. It contains the basic components to generate webforms. It will be used to dynamically add additional email/telephone input fields when adding or updating contacts. 
+* a basic webform (webReactDynForm.php) using React JS is included. It contains the basic components to generate webforms. 
+It allows to dynamically add an additional email input field when adding a new contact. 
 
 ## Database-Layout:
 
@@ -87,15 +88,16 @@ tables and fields:
 
 ## Extensions:
 
-1. friendly layout. The application would greatly benefit from a ReactJS-enhanced UI.
-For example, data that originates from tables with key constraints: emails,telephones,notes could be
-dynamically extended when filling the form-fields of a previous element when creating a contact.
+1. more friendly layout. The application would benefit if the list of all contacts and the form for adding a new contact are next to
+each other on the same view. Could be done with React JS components.
 Moreover, showing a * all-contacts-component* and a *show-a-specific-contact* on the same view would improve the usability.
 
-2. With an extension to several users that create contacts and  proper authentication, it would be much more useful.
+2. adding the feature: "dynamically generating new email input fields" from public/webReactDynForm.php to telephone and all create/update views
 
-3. JSON-format for View-Model interface
+3. With an extension to several users that create contacts and  proper authentication, it would be much more useful.
 
-4. ...
+4. JSON-format for View-Model interface
+
+5. ...
 
     
